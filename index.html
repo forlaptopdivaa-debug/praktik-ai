@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV-Genie AI - Pembuat CV Impian Anak SMK</title>
+    <style>
+        /* CSS RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #4F46E5;
+            --primary-hover: #4338CA;
+            --bg-color: #F9FAFB;
+            --card-bg: #FFFFFF;
+            --text-color: #1F2937;
+            --border-color: #E5E7EB;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            background-color: #EEF2FF;
+            color: var(--primary-color);
+            font-size: 0.75rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 999px;
+            font-weight: 600;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CARDS */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* FORM ELEMENTS */
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-ai {
+            background: linear-gradient(135deg, #6366F1, #8B5CF6);
+            margin-top: 0.5rem;
+        }
+
+        /* PREVIEW AREA */
+        .cv-preview {
+            border: 1px dashed var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            background-color: #FAFAFA;
+        }
+
+        .cv-header {
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .cv-header h2 {
+            color: var(--primary-color);
+        }
+
+        .cv-section {
+            margin-bottom: 1rem;
+        }
+
+        .cv-section h3 {
+            font-size: 1rem;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* PRICING SECTION */
+        .pricing {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .pricing-cards {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .price-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 250px;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--primary-color);
+            position: relative;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="logo">
+            ⚡ CV-Genie <span class="badge">AI Powered</span>
+        </div>
+        <div>
+            <span style="font-size: 0.9rem; color: #6B7280;">Solusi Karir Anak SMK</span>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <!-- FORM INPUT (KIRI) -->
+        <div class="card">
+            <div class="card-title">📝 Data Diri & Jurusan</div>
+            <form id="cvForm">
+                <div class="form-group">
+                    <label for="fullName">Nama Lengkap</label>
+                    <input type="text" id="fullName" placeholder="Contoh: Budi Santoso" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="major">Jurusan SMK</label>
+                    <select id="major" required>
+                        <option value="">-- Pilih Jurusan --</option>
+                        <option value="RPL">Rekayasa Perangkat Lunak (RPL)</option>
+                        <option value="TKJ">Teknik Komputer & Jaringan (TKJ)</option>
+                        <option value="MM">Desain Komunikasi Visual / Multimedi</option>
+                        <option value="AK">Akuntansi & Keuangan</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="skills">Keahlian / Skill Utama</label>
+                    <input type="text" id="skills" placeholder="Contoh: HTML, CSS, Troubleshooting">
+                </div>
+
+                <button type="button" class="btn btn-ai" onclick="generateAIProfile()">
+                    ✨ Generasi Ringkasan Profil AI
+                </button>
+            </form>
+        </div>
+
+        <!-- PREVIEW CV (KANAN) -->
+        <div class="card">
+            <div class="card-title">📄 Preview Live CV</div>
+            <div class="cv-preview">
+                <div class="cv-header">
+                    <h2 id="previewName">Nama Anda</h2>
+                    <p id="previewMajor" style="color: #6B7280;">Jurusan SMK</p>
+                </div>
+                
+                <div class="cv-section">
+                    <h3>Ringkasan Profil (Dibuat oleh AI)</h3>
+                    <p id="previewSummary" style="font-size: 0.9rem; color: #4B5563; font-style: italic;">
+                        Klik tombol "Generasi Ringkasan Profil AI" untuk membuat deskripsi profesional otomatis...
+                    </p>
+                </div>
+
+                <div class="cv-section">
+                    <h3>Keahlian</h3>
+                    <p id="previewSkills" style="font-size: 0.9rem; color: #4B5563;">-</p>
+                </div>
+            </div>
+            <button class="btn" style="margin-top: 1rem;" onclick="alert('Fitur Cetak PDF tersedia pada akun Premium!')">
+                📥 Download PDF CV
+            </button>
+        </div>
+
+        <!-- MODEL BISNIS / PRICING -->
+        <div class="pricing">
+            <h2>Pilih Paket Layanan</h2>
+            <p style="color: #6B7280;">Mulai gratis, tingkatkan untuk peluang kerja lebih besar!</p>
+            
+            <div class="pricing-cards">
+                <div class="price-card">
+                    <h3>Basic</h3>
+                    <div class="price">Rp 0</div>
+                    <p style="font-size: 0.85rem; color: #6B7280;">1 Template CV Standard<br>Generasi AI 3x / hari</p>
+                </div>
+                <div class="price-card featured">
+                    <span class="badge" style="position: absolute; top: -10px; right: 20px;">Populer</span>
+                    <h3>Pro SMK</h3>
+                    <div class="price">Rp 15.000<span style="font-size: 0.8rem;">/bln</span></div>
+                    <p style="font-size: 0.85rem; color: #6B7280;">Template Premium ATS-Friendly<br>Generasi AI Tanpa Batas<br>Rekomendasi Loker SMK</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT SIMULASI AI -->
+    <script>
+        // Real-time update untuk Nama dan Jurusan
+        document.getElementById('fullName').addEventListener('input', function(e) {
+            document.getElementById('previewName').innerText = e.target.value || 'Nama Anda';
+        });
+
+        document.getElementById('major').addEventListener('change', function(e) {
+            const majorText = e.target.options[e.target.selectedIndex].text;
+            document.getElementById('previewMajor').innerText = e.target.value ? majorText : 'Jurusan SMK';
+        });
+
+        document.getElementById('skills').addEventListener('input', function(e) {
+            document.getElementById('previewSkills').innerText = e.target.value || '-';
+        });
+
+        // Simulasi Fungsi AI
+        function generateAIProfile() {
+            const name = document.getElementById('fullName').value;
+            const major = document.getElementById('major').value;
+            const skills = document.getElementById('skills').value;
+            const summaryElem = document.getElementById('previewSummary');
+
+            if (!name || !major) {
+                alert('Harap isi Nama Lengkap dan Jurusan terlebih dahulu!');
+                return;
+            }
+
+            summaryElem.innerText = "⚡ Sedang memproses deskripsi berbasis AI...";
+
+            // Simulasi Delay AI Processing (1.5 detik)
+            setTimeout(() => {
+                let aiText = "";
+                
+                if (major === "RPL") {
+                    aiText = `Lulusan SMK Jurusan Rekayasa Perangkat Lunak yang berdedikasi tinggi dan memiliki ketertarikan kuat dalam pengembangan web serta pemecahan masalah logika. Terbiasa bekerja dengan keahlian seperti ${skills || 'pemrograman dasar'} dan siap berkontribusi dalam tim pengembang software profesional.`;
+                } else if (major === "TKJ") {
+                    aiText = `Lulusan SMK Teknik Komputer & Jaringan yang handal dalam pemeliharaan sistem jaringan, konfigurasi perangkat, dan troubleshooting hardware. Dikuatkan dengan kemampuan ${skills || 'jaringan dasar'}, siap mengoptimalkan infrastruktur IT perusahaan.`;
+                } else if (major === "MM") {
+                    aiText = `Kreator konten visual berbakat dari jurusan Multimedia/DKV dengan keahlian dalam desain grafis dan elemen visual modern. Berbekal kemampuan ${skills || 'desain kreatif'}, siap memperkuat branding produk visual perusahaan.`;
+                } else {
+                    aiText = `Lulusan SMK Akuntansi yang teliti, terstruktur, dan memiliki pemahaman baik dalam pencatatan keuangan serta administrasi. Menguasai ${skills || 'pembukuan dasar'} untuk mendukung efisiensi operasional bisnis.`;
+                }
+
+                summaryElem.innerText = aiText;
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
